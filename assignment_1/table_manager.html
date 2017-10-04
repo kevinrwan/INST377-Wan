@@ -35,6 +35,10 @@
         background-color: yellow;
     }
 
+    div.stats_table {
+
+    }
+
 </style>
 
 <!-- Data -->
@@ -295,14 +299,16 @@ function updateTable(tr) {
     var orgs = document.getElementById("org_table");
     var stats_tab = document.getElementById("stats_table");
 
+
     //updates stats_table "total num orgs" cell after a row is deleted
     var num_orgs = stats_tab.childNodes[0].childNodes[0].childNodes[1].childNodes[0];
     num_orgs.innerHTML = tr.parentNode.childNodes.length-2;
 
 
 
+
     //updates "num unique countries" cell after a row is deleted
-    //stats_table.tbody.tr.td.cell
+    //stats_table.tbody.tr.td.cell2
     var unique = stats_tab.childNodes[0].childNodes[0].childNodes[1].childNodes[1];
     //length of countries list (org_table.tbody.tr.length)
     var len = orgs.childNodes[0].childNodes[0].childNodes.length;
@@ -311,7 +317,6 @@ function updateTable(tr) {
         var country = orgs.childNodes[0].childNodes[0].childNodes[i].childNodes[1];
         countries.push(country.innerHTML);
     }
-
 
     var index = countries.indexOf(tr.childNodes[1].innerHTML);
 
@@ -327,7 +332,9 @@ function updateTable(tr) {
     }
 
 
+
     //updates "num Organizations in Europe & Central Asia" cell after a row is deleted
+    //stat_tab.tbody.tr.td.cell3
     var eur_asia = stats_tab.childNodes[0].childNodes[0].childNodes[1].childNodes[2];
     var regions = [];
     for(k = 1; k < len; k++) {
@@ -335,15 +342,31 @@ function updateTable(tr) {
         regions.push(region.innerHTML);
     }
 
-
-
+    //index of last the region in the regions table that matches the region of the row removed, -1 if not 
     var index2 = regions.indexOf(tr.childNodes[0].innerHTML)
-    // removes an instance of region name in countries array
-    for(n = 0; n < regions.length; n++) {
-        if(tr.childNodes[0].innerHTML == regions[n]) {
-             regions.splice(index2,1);     
-        }
-    }   
+    // checks if the row removed was in Europe & Central Asia region, then removes an instance of region name in regions array
+    if(tr.childNodes[0].innerHTML == "Europe &amp; Central Asia") {
+        eur_asia.innerHTML -= 1; 
+    }
+    regions.splice(index2,1);
+
+
+
+    //updates old_orgs statistic cell in stats_table
+    //stat_tab.tbody.tr.td.cell4
+    var old_orgs = stats_tab.childNodes[0].childNodes[0].childNodes[1].childNodes[3];
+    var years = [];
+    for(n = 1; n < len; n++) {
+        var year = orgs.childNodes[0].childNodes[0].childNodes[n].childNodes[9];
+        years.push(year.innerHTML);
+    }
+
+    var index3 = years.indexOf(tr.childNodes[9].innerHTML)
+    if(new Date().getFullYear() - tr.childNodes[9].innerHTML > 15){
+        old_orgs.innerHTML -= 1;
+    }
+    years.splice(index2,1);
+
 
 
 }
