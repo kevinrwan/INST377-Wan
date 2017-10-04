@@ -9,5 +9,5 @@
 ### Local Server Environment:
 * MAMP Ver. 3.3.1
 * MySQL, Ver. 5.6.34
-* PHP, Ver. 7.1.5
 * Apache, Ver. 2.2.31
+* PHP, Ver. 7.1.5

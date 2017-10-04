@@ -1,0 +1,430 @@
+<html>
+<head>
+<!-- CSS -->
+<style type="text/css">
+	div {
+		margin-bottom: 20px;
+	}
+
+    table {
+        font-size: 10;
+        font-family: georgia;
+        background-color: #daebe8;
+        border: 2px solid darkgreen;
+        width: 100%;
+    }
+
+    th {
+        font-size: 13;
+        font-family: Helvetica;
+        text-decoration: underline;
+        text-decoration-color: darkgreen;
+        color: darkred;        
+        border: 1px solid black;
+    } 
+
+    td {
+        font-size: 10;
+        font-family: georgia;
+        border: 1px solid black;
+        width: 100%;
+        padding: 5px;
+    }
+
+    tr:hover {
+        background-color: yellow;
+    }
+
+</style>
+
+<!-- Data -->
+<script>
+
+// Don't copy this to any other places in this file. You can just use the "organizations" variable to do your assignment. 
+var organizations = [
+	 {
+        "Region": "East Asia & Pacific",
+        "Country": "New Zealand",
+        "Country Income Level": "High income",
+        "Organization Name": "200 Square",
+        "Organization Type": "For-profit",
+        "Sectors": "Housing, construction & real estate",
+        "Description": "200 Square is an online real estate agent in New Zealand.",        
+        "City": "Wellington",
+        "State/Region": "Wellington",
+        "Founding Year": 2010,
+        "Size": "1 to 10",
+        "Type of Data Used": "Housing, Education",
+        "profileID": "731"
+    },
+    {
+        "Region": "Europe & Central Asia",
+        "Country": "United Kingdom",
+        "Country Income Level": "High income",
+        "Organization Name": "21c Consultancy",
+        "Organization Type": "For-profit",
+        "Sectors": "IT and geospatial",
+        "Description": "21c is ICT innovation consultancy which advises international actors, institutions and governments around the world on technological trends which can affect the way they deliver services.",        
+        "City": "London",
+        "State/Region": "",
+        "Founding Year": 2015,
+        "Size": "1 to 10",
+        "Type of Data Used": "",
+        "profileID": "1694"
+    },
+    {
+        "Region": "Europe & Central Asia",
+        "Country": "Russian Federation",
+        "Country Income Level": "High income",
+        "Organization Name": "2GIS",
+        "Organization Type": "For-profit",
+        "Sectors": "IT and geospatial",
+        "Description": "2GIS is a city information service combined with a map. ",        
+        "City": "Novosibirsk",
+        "State/Region": "Novosibirsk Oblast",
+        "Founding Year": 1999,
+        "Size": "1000+",
+        "Type of Data Used": "Transportation, Geospatial, Business",
+        "profileID": "1025"
+    },
+    {
+        "Region": "North America",
+        "Country": "United States",
+        "Country Income Level": "High income",
+        "Organization Name": "2nd City Zoning",
+        "Organization Type": "Nonprofit",
+        "Sectors": "Housing, construction & real estate",
+        "Description": "An Open City App, 2nd City Zoning is an interactive map that lets you find out how your building is zoned, learn where to locate your business and explore zoning patterns throughout the city.",        
+        "City": "Chicago",
+        "State/Region": "Illinois",
+        "Founding Year": 2013,
+        "Size": "1 to 10",
+        "Type of Data Used": "Housing",
+        "profileID": "1693"
+    },
+    {
+        "Region": "North America",
+        "Country": "United States",
+        "Country Income Level": "High income",
+        "Organization Name": "3 Round Stones Inc",
+        "Organization Type": "For-profit",
+        "Sectors": "IT and geospatial",
+        "Description": "3 Round Stones' Open Source platform is used by the Fortune 2000 and US Government Agencies to collect, publish and reuse data, both public and proprietary.",
+        "City": "Arlington",
+        "State/Region": "Virginia",
+        "Founding Year": 2010,
+        "Size": "1 to 10",
+        "Type of Data Used": "Weather, Science and research, Health/healthcare, Geospatial, Environment, Energy, Demographic and social, Business",
+        "profileID": "580"
+    },
+    {
+        "Region": "North America",
+        "Country": "United States",
+        "Country Income Level": "High income",
+        "Organization Name": "360 Yield Center",
+        "Organization Type": "For-profit",
+        "Sectors": "Agriculture",
+        "Description": "Taking a 360-degree view of key yield-limiting variables, 360 Yield Center develops strategies for better-performing crops and better on-farm profits.",        
+        "City": "Morton",
+        "State/Region": "Illinois",
+        "Founding Year": 2014,
+        "Size": "51 to 200",
+        "Type of Data Used": "Agriculture, Environment, Weather",
+        "profileID": "1692"
+    },
+    {
+        "Region": "Europe & Central Asia",
+        "Country": "Denmark",
+        "Country Income Level": "High income",
+        "Organization Name": "3Strikes - City Stories",
+        "Organization Type": "For-profit",
+        "Sectors": "Arts, culture and tourism",
+        "Description": "City Stories provides a platform that allows users to explore local stories and simultaneously contribute their own.",
+        "City": "Aarhus",
+        "State/Region": "Central Denmark Region",
+        "Founding Year": 2015,
+        "Size": "1 to 10",
+        "Type of Data Used": "Arts and culture",
+        "profileID": "2278"
+    },
+    {
+        "Region": "Europe & Central Asia",
+        "Country": "Finland",
+        "Country Income Level": "High income",
+        "Organization Name": "3Tier (Europe) ",
+        "Organization Type": "For-profit",
+        "Sectors": "Energy and climate",
+        "Description": "3TIER is a global environmental and industrial measurement company providing weather-driven renewable energy risk assessment and forecasting for wind, solar, and hydro power projects.",        
+        "City": "Helsinki",
+        "State/Region": "Uusimaa",
+        "Founding Year": 2012,
+        "Size": "11 to 50",
+        "Type of Data Used": "Other, Environment",
+        "profileID": "952"
+    },
+    {
+        "Region": "North America",
+        "Country": "United States",
+        "Country Income Level": "High income",
+        "Organization Name": "5PSolutions",
+        "Organization Type": "For-profit",
+        "Sectors": "IT and geospatial",
+        "Description": "5PSolutions are artisans of mobile platforms.",       
+        "City": "Fairfax",
+        "State/Region": "Virginia",
+        "Founding Year": 2007,
+        "Size": "1 to 10",
+        "Type of Data Used": "Environment",
+        "profileID": "534"
+    },
+    {
+        "Region": "North America",
+        "Country": "United States",
+        "Country Income Level": "High income",
+        "Organization Name": "AAA National",
+        "Organization Type": "Other",
+        "Sectors": "Transportation and logistics",
+        "Description": "AAA provides services such as travel, automotive, insurance, financial, and discounts.",        
+        "City": "Irving",
+        "State/Region": "Texas",
+        "Founding Year": 1902,
+        "Size": "201 to 1000",
+        "Type of Data Used": "Transportation",
+        "profileID": "1691"
+    },
+    {
+        "Region": "North America",
+        "Country": "United States",
+        "Country Income Level": "High income",
+        "Organization Name": "AAASHTO",
+        "Organization Type": "Other",
+        "Sectors": "Transportation and logistics",
+        "Description": "AASHTO works to educate the public and key decision makers about the critical role that transportation plays in securing a good quality of life and sound economy. AASHTO serves as a liaison between state departments of transportation and the Federal government.",
+        "City": "Washington",
+        "State/Region": "DC",
+        "Founding Year": 1913,
+        "Size": "51 to 200",
+        "Type of Data Used": "Transportation",
+        "profileID": "1690"
+    },
+    {
+        "Region": "Latin America & Caribbean",
+        "Country": "Chile",
+        "Country Income Level": "High income",
+        "Organization Name": "ABRELATAM",
+        "Organization Type": "Nonprofit",
+        "Sectors": "Governance",
+        "Description": "ABRELATAM is an conference that seeks to accelerate the process of opening information through Open Data transparency and promote the Latin America.",        
+        "City": "Santiago",
+        "State/Region": "",
+        "Founding Year": 2015,
+        "Size": "",
+        "Type of Data Used": "",
+        "profileID": "1687"
+    }
+	
+];
+
+</script>
+
+</head>
+
+<body>
+<!-- Feel free to add empty tags. Data shouldn't be here. -->
+<div id="org_table" ></div>
+<div id="stats_table"></div>
+
+<script>
+// outputs the first item of the organizations array. Just for testing.
+//console.log(organizations[0]); 
+
+// Your JavaScript code goes here
+
+
+
+function createTable(organizations) {
+
+        // create table
+        var table = document.createElement("table");
+
+         // adds header data to an array
+        var col = [];
+        for (i = 0; i < organizations.length; i++) {
+            for (var key in organizations[i]) {
+
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        
+        // establish initial row for headers
+        var tr = table.insertRow(-1); 
+
+        // inserts header data from column array to first row
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");
+            th.innerHTML = col[i]; 
+            tr.appendChild(th);
+        }
+
+        // adds data to the rest of table rows
+        for (var i = 0; i < organizations.length; i++) {
+            tr = table.insertRow(-1); 
+            tr.setAttribute("onClick", "hide(this)");
+
+            for (var j = 0; j < col.length; j++) {
+                var td = tr.insertCell(-1);
+                td.innerHTML = organizations[i][col[j]];
+            }
+        }
+        // add table to div org_table tag
+        var tableDiv = document.getElementById("org_table");
+        tableDiv.innerHTML = ""; 
+        tableDiv.appendChild(table); 
+
+}
+
+function hide(tr){
+    updateTable(tr);
+    tr.parentNode.removeChild(tr);   
+}
+
+function updateTable(tr) {
+    var orgs = document.getElementById("org_table");
+    var stats_tab = document.getElementById("stats_table");
+
+    //updates stats_table "total num orgs" cell after a row is deleted
+    var num_orgs = stats_tab.childNodes[0].childNodes[0].childNodes[1].childNodes[0];
+    num_orgs.innerHTML = tr.parentNode.childNodes.length-2;
+
+
+
+    //updates "num unique countries" cell after a row is deleted
+    //stats_table.tbody.tr.td.cell
+    var unique = stats_tab.childNodes[0].childNodes[0].childNodes[1].childNodes[1];
+    //length of countries list (org_table.tbody.tr.length)
+    var len = orgs.childNodes[0].childNodes[0].childNodes.length;
+    var countries = [];
+    for(i = 1; i < len; i++) {
+        var country = orgs.childNodes[0].childNodes[0].childNodes[i].childNodes[1];
+        countries.push(country.innerHTML);
+    }
+
+
+    var index = countries.indexOf(tr.childNodes[1].innerHTML);
+
+    // removes an instance of country name in countries array
+    for(j = 0; j < countries.length; j++) {
+        if(tr.childNodes[1].innerHTML == countries[j]) {
+            countries.splice(index,1);
+        }
+    }
+    //if country is not in the array, decrement unique country statistic in table
+    if(countries.indexOf(tr.childNodes[1].innerHTML) === -1) {
+        unique.innerHTML -= 1;
+    }
+
+
+    //updates "num Organizations in Europe & Central Asia" cell after a row is deleted
+    var eur_asia = stats_tab.childNodes[0].childNodes[0].childNodes[1].childNodes[2];
+    var regions = [];
+    for(k = 1; k < len; k++) {
+        var region = orgs.childNodes[0].childNodes[0].childNodes[k].childNodes[0];
+        regions.push(region.innerHTML);
+    }
+
+
+
+    var index2 = regions.indexOf(tr.childNodes[0].innerHTML)
+    // removes an instance of region name in countries array
+    for(n = 0; n < regions.length; n++) {
+        if(tr.childNodes[0].innerHTML == regions[n]) {
+             regions.splice(index2,1);     
+        }
+    }   
+
+
+}
+
+function createStatsTable(organizations) {
+    var stats_table = document.createElement("table");
+    
+    
+    //statistics header array
+    var col = ['Total Number of Organizations Worldwide: ', 'Number of Unique Countries: ', 'Number of Organizations in Europe and Central Asia: ', 'Number of Organizations Older than 15 Years Old: '];
+
+
+    var headers = stats_table.insertRow(-1);
+
+    //adds col data to first row of stats_table
+    for (i = 0; i < col.length; i++) {
+        var th = document.createElement("th");
+        th.innerHTML = col[i]; 
+        headers.appendChild(th);
+    }
+   
+
+    var stat_value_row = stats_table.insertRow(-1);
+
+    //inserts value for the total num of orgs worldwide statistic into its cell
+    var total_orgs = stat_value_row.insertCell(-1);
+    total_orgs.innerHTML = "" + organizations.length;
+    
+
+
+    //inserts value for the num of unique countries statistic into its cell
+    var unique_countries = stat_value_row.insertCell(-1);
+    var country_list = [];
+    for (i = 0; i < organizations.length; i++) {
+        //checks if country is already in country_list, if not, then adds it, to get unique countries
+        if(country_list.indexOf(organizations[i].Country) === -1){
+            country_list.push(organizations[i].Country);
+        }
+
+    }
+    unique_countries.innerHTML = "" + country_list.length;
+
+
+
+    //inserts value for the num of orgs in Europe and Central Asia statistic into its cell
+    var eur_asia = stat_value_row.insertCell(-1);
+    var eur_asia_orgs = 0;
+    for (i = 0; i < organizations.length; i++) {
+        if(organizations[i].Region == "Europe & Central Asia"){
+            eur_asia_orgs++;
+        }
+
+    }
+    eur_asia.innerHTML = "" + eur_asia_orgs;
+
+
+
+    //inserts value for the num of orgs older than 15 years statistic into its cell
+    var old_orgs = stat_value_row.insertCell(-1);
+    var old_orgs_count = 0;
+    for (i = 0; i < organizations.length; i++) {
+        if(new Date().getFullYear() - organizations[i]["Founding Year"] > 15){
+            old_orgs_count++;
+        }
+
+    }
+    old_orgs.innerHTML = "" + old_orgs_count;
+
+
+    //adds stats_table object to div stats_table tag
+
+    var stats_table_div = document.getElementById("stats_table");
+    stats_table_div.innerHTML = ""; 
+    stats_table_div.appendChild(stats_table); 
+
+}
+
+
+createTable(organizations);
+createStatsTable(organizations);
+</script>
+
+</body>
+</html>
