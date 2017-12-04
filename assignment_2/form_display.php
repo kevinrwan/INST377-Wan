@@ -37,7 +37,7 @@ $fetch = mysqli_fetch_array($result);
         width: 100%;
     }
 
-    th {
+    tr {
         font-size: 13;
         font-family: Helvetica;
         text-decoration: underline;
@@ -63,7 +63,6 @@ $fetch = mysqli_fetch_array($result);
 
 <?php 
 // The code that you recieve input data from the form goes to here.
-
 
 $arr = array("First Name" => "first_name", "Last Name" => "last_name", "Email" => "email", "Address" => "address", "City" => "city");
 
