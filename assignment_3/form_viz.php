@@ -100,9 +100,8 @@ $(document).ready(function(){
 <!-- Assignment 3: add a form so you can add a city entry to the "city" table. -->
 <form id="city_form">
 	<!-- inputs needed here -->
-	<div \
-	name="city"> Enter City </div>
-	<div name="country"> Enter Country </div>
+	city: <input id="city" type="text" name="city"><br>
+	country_id: <input id="country_id" type="number" name="country_id"><br>
 </form>
 
 <button id="submit"> Submit </button>

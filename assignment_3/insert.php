@@ -25,19 +25,14 @@ function query_to_db($conn, $sql){
 
 
 // Receving the submitted data
-
+$city = $_POST["city_name"];
+$country_id = $_POST["country_id"];
 
 
 // You need to save the data into the database. Write an INSERT query here.
-$city = $_POST["city"];
-$country_id = $_POST["country_id"];
-
 $sql = "INSERT into city (city, country_id)
 		VALUES ('$city', $country_id);";
 query_to_db($conn, $sql);
 
 
-
 mysqli_close($conn);
-
-
